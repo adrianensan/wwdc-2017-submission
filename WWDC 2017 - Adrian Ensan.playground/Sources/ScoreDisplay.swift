@@ -20,7 +20,7 @@ class ScoreDisplay: SKNode {
 
     func update(unit: CGFloat, destroyedRocks: Int, highscore: Int) {
         let scoreAsText = String(destroyedRocks)
-        while self.score.count < scoreAsText.characters.count {
+        while self.score.count < scoreAsText.count {
             self.score.append(SKLabelNode(fontNamed: "Moon Light"))
             self.score[self.score.count - 1].fontSize = 7 * unit
             self.score[self.score.count - 1].fontColor = (self.score.count > 1) ? self.score[self.score.count - 2].fontColor : SKColor.white

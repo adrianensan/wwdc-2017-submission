@@ -105,7 +105,7 @@ class GameOverOverlay: SKNode {
             highscoreScoreLabel.position.y = -12 * unit - CGFloat(i) * 5 * unit
             self.addChild(highscoreScoreLabel)
 
-            self.highscoreLabels.append(number: highscoreNumberLabel, name: highscoreNameLabel, score: highscoreScoreLabel)
+            self.highscoreLabels.append((number: highscoreNumberLabel, name: highscoreNameLabel, score: highscoreScoreLabel))
         }
 
         self.restartMessage.fontName = "Moon Light"

@@ -322,7 +322,7 @@ public class GameScene: SKScene {
                 self.shoot()
             }
         } else if self.gameOverOverlay.waitingForInput {
-            if event.keyCode == backspaceKey && self.gameOverOverlay.editingLabel?.text?.characters.count ?? 0 > 0 {
+            if event.keyCode == backspaceKey && self.gameOverOverlay.editingLabel?.text?.count ?? 0 > 0 {
                 if let baseText = self.gameOverOverlay.editingLabel?.text {
                     var text = baseText
                     text.remove(at: text.index(before: text.endIndex))
@@ -330,13 +330,13 @@ public class GameScene: SKScene {
                     self.gameOverOverlay.resizeLabel(nameLabel: self.gameOverOverlay.editingLabel!)
                 }
             } else if event.keyCode == enterKey , let name = self.gameOverOverlay.editingLabel?.text?.trimmingCharacters(in: .whitespaces) {
-                if name.characters.count > 0 {
+                if name.count > 0 {
                     self.highscores[self.currentHighScore].name = name
                     self.gameOverOverlay.enterName()
                     self.saveScores()
                     self.currentHighScore = -1
                 }
-            } else if self.gameOverOverlay.editingLabel?.text?.characters.count ?? 0 <= 20 && ![123, 124, 125, 126, enterKey, backspaceKey].contains(event.keyCode) {
+            } else if self.gameOverOverlay.editingLabel?.text?.count ?? 0 <= 20 && ![123, 124, 125, 126, enterKey, backspaceKey].contains(event.keyCode) {
                 self.gameOverOverlay.editingLabel?.text = (self.gameOverOverlay.editingLabel?.text ?? "") + (event.characters ?? "")
                 self.gameOverOverlay.resizeLabel(nameLabel: self.gameOverOverlay.editingLabel!)
             }
@@ -458,7 +458,7 @@ public class GameScene: SKScene {
                 let highscoreFile = try String(contentsOf: path, encoding: .unicode)
                 let highscoreStrings = highscoreFile.components(separatedBy: .newlines)
                 var i: Int64 = 1
-                for highscoreString in highscoreStrings where highscoreString.characters.count > 0 {
+                for highscoreString in highscoreStrings where highscoreString.count > 0 {
                     let fields = highscoreString.components(separatedBy: "|")
                     if fields.count == 3,
                         let score = Int(fields[0]),
